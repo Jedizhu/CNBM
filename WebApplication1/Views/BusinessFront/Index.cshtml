@@ -1,0 +1,59 @@
+﻿@model List<WebApplication1.Models.Product>
+
+@{
+    ViewBag.Title = "Our Business";
+}
+
+<section id="page-breadcrumb">
+    <div class="vertical-center sun">
+        <div class="container">
+            <div class="row">
+                <div class="action">
+                    <div class="col-sm-12">
+                        <h1 class="title">@ViewBag.Title</h1>
+                        <p>@ViewBag.Message</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="portfolio">
+    <div class="container">
+        <div class="row">
+            <ul class="portfolio-filter text-center">
+                <li><a class="btn btn-default active" href="#" data-filter="*">All</a></li>
+                <li><a class="btn btn-default" href="#" data-filter=".AgriculturalMachinery">Agricultural Machinery</a></li>
+                <li><a class="btn btn-default" href="#" data-filter=".AgriculturalMaterials">Agricultural Materials</a></li>
+                <li><a class="btn btn-default" href="#" data-filter=".BuildingMaterials">Building Materials</a></li>
+                <li><a class="btn btn-default" href="#" data-filter=".ConstructionMachinery">Construction Machinery</a></li>
+                <li><a class="btn btn-default" href="#" data-filter=".FMCG">FMCG</a></li>
+            </ul>
+            <div class="portfolio-items">
+                @foreach (var product in this.Model)
+                {
+                    <div class="col-xs-6 col-sm-4 col-md-3 portfolio-item @product.Category.Name">
+                        <div class="portfolio-wrapper">
+                            <div class="portfolio-single">
+                                <div class="portfolio-thumb">
+                                    <img src="~/Images/products/@(product.Name).jpg" class="img-responsive" alt="" />
+                                </div>
+                                <div class="portfolio-view">
+                                    <ul class="nav nav-pills">
+                                        <li><a href="~/Products/Details/@(product.Id)"><i class="fa fa-link"></i></a></li>
+                                        <li><a href="~/Images/products/@(product.Name).jpg" data-lightbox="example-set"><i class="fa fa-eye"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="portfolio-info">
+                                <h2>@product.Name</h2>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+<script type="text/javascript" src="~/Scripts/jquery.isotope.min.js"></script>
+<script type="text/javascript" src="~/Scripts/lightbox.js"></script>
